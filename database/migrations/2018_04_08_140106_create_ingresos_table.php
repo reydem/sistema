@@ -40,3 +40,5 @@ class CreateIngresosTable extends Migration
         Schema::dropIfExists('ingresos');
     }
 }
+
+ 

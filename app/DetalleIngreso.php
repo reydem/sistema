@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DetalleIngreso extends Model
 {
-    protected $table = 'detalles_ingresos';
+    protected $table = 'detalle_ingresos';
     protected $fillable = [
             'idingreso',
             'idarticulo',
@@ -15,3 +15,4 @@ class DetalleIngreso extends Model
         ];
     public $timestamps = false;
 }
+
