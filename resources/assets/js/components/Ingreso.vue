@@ -274,7 +274,7 @@
                 total:0.0,
                 arrayIngreso : [],
                 arrayDetalle : [],
-
+                listado:1,
                 modal : 0,
                 tituloModal : '',
                 tipoAccion : 0,
