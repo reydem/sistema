@@ -3315,6 +3315,7 @@ __webpack_require__.r(__webpack_exports__);
       total: 0.0,
       arrayIngreso: [],
       arrayDetalle: [],
+      listado: 1,
       modal: 0,
       tituloModal: '',
       tipoAccion: 0,
@@ -3451,6 +3452,12 @@ __webpack_require__.r(__webpack_exports__);
       if (this.idrol == 0) this.errorMostrarMsjPersona.push("Debes seleccionar un rol para el usuario");
       if (this.errorMostrarMsjPersona.length) this.errorPersona = 1;
       return this.errorPersona;
+    },
+    mostrarDetalle: function mostrarDetalle() {
+      this.listado = 0;
+    },
+    ocultarDetalle: function ocultarDetalle() {
+      this.listado = 1;
     },
     cerrarModal: function cerrarModal() {
       this.modal = 0;

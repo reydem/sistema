@@ -415,6 +415,12 @@
                 return this.errorPersona;
 
             },
+             mostrarDetalle(){
+                this.listado=0;
+            },
+            ocultarDetalle(){
+                this.listado=1;
+            },
             cerrarModal(){
                 this.modal=0;
                 this.tituloModal='';
