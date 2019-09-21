@@ -380,6 +380,7 @@
                    if (this.validarPersona()) {
                     return;
                 }
+                
                 let me = this;
                   axios.post('./user/actualizar', {
                     'nombre' : this.nombre,
