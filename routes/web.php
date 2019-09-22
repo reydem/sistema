@@ -42,6 +42,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/proveedor', 'ProveedorController@index');
         Route::post('/proveedor/registrar', 'ProveedorController@store');
         Route::put('/proveedor/actualizar', 'ProveedorController@update');
+        Route::get('/proveedor/selectProveedor', 'ProveedorController@selectProveedor');
 
         Route::get('/ingreso', 'IngresoController@index');
         Route::post('/ingreso/registrar', 'IngresoController@store');
@@ -79,6 +80,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/proveedor', 'ProveedorController@index');
         Route::post('/proveedor/registrar', 'ProveedorController@store');
         Route::put('/proveedor/actualizar', 'ProveedorController@update');
+        Route::get('/proveedor/selectProveedor', 'ProveedorController@selectProveedor');
 
         Route::get('/ingreso', 'IngresoController@index');
         Route::post('/ingreso/registrar', 'IngresoController@store');
