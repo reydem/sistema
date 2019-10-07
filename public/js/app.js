@@ -31890,7 +31890,7 @@ var render = function() {
         [
           _c("div", { staticClass: "card-header" }, [
             _c("i", { staticClass: "fa fa-align-justify" }),
-            _vm._v(" Ingresos\n                    "),
+            _vm._v(" Ingresos\n                "),
             _c(
               "button",
               {
@@ -31904,7 +31904,7 @@ var render = function() {
               },
               [
                 _c("i", { staticClass: "icon-plus" }),
-                _vm._v(" Nuevo\n                    ")
+                _vm._v(" Nuevo\n                ")
               ]
             )
           ]),
@@ -32065,7 +32065,7 @@ var render = function() {
                                     [_c("i", { staticClass: "icon-eye" })]
                                   ),
                                   _vm._v(
-                                    "  \n                                        "
+                                    "  \n                                    "
                                   ),
                                   ingreso.estado == "Registrado"
                                     ? [
@@ -32251,6 +32251,7 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("v-select", {
+                            staticClass: "col-md-9",
                             attrs: {
                               "on-search": _vm.selectProveedor,
                               label: "nombre",
@@ -32734,7 +32735,7 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("td", [
                   _vm._v(
-                    "\n                                            Artículo n\n                                        "
+                    "\n                                        Artículo n\n                                    "
                   )
                 ]),
                 _vm._v(" "),
@@ -32754,7 +32755,7 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("td", [
                   _vm._v(
-                    "\n                                            $ 6.00\n                                        "
+                    "\n                                        $ 6.00\n                                    "
                   )
                 ])
               ]),
@@ -32773,7 +32774,7 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("td", [
                   _vm._v(
-                    "\n                                            Artículo n\n                                        "
+                    "\n                                        Artículo n\n                                    "
                   )
                 ]),
                 _vm._v(" "),
@@ -32793,7 +32794,7 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("td", [
                   _vm._v(
-                    "\n                                            $ 6.00\n                                        "
+                    "\n                                        $ 6.00\n                                    "
                   )
                 ])
               ]),

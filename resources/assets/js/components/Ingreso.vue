@@ -1,10 +1,10 @@
 <template>
-    <main class="main">
+            <main class="main">
             <!-- Breadcrumb -->
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Escritorio</a></li> 
+                <li class="breadcrumb-item"><a href="/">Escritorio</a></li>
             </ol>
-        <div class="container-fluid">
+            <div class="container-fluid">
                 <!-- Ejemplo de tabla Listado -->
                 <div class="card">
                     <div class="card-header">
@@ -93,7 +93,7 @@
                             <div class="col-md-9">
                                 <div class="form-group">
                                     <label for="">Proveedor(*)</label>
-                                    <v-select
+                                    <v-select class="col-md-9"
                                         :on-search="selectProveedor"
                                         label="nombre"
                                         :options="arrayProveedor"
@@ -172,7 +172,7 @@
                                             <th>Subtotal</th>
                                         </tr>
                                     </thead>
-                                   <tbody>
+                                    <tbody>
                                         <tr>
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-sm">
@@ -245,15 +245,15 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title" v-text="tituloModal"></h4>
-                            <button type="button" class="close" @click="cerrarModal()"  aria-label="Close">
+                            <button type="button" class="close" @click="cerrarModal()" aria-label="Close">
                               <span aria-hidden="true">×</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                           
+                            
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" @click="cerrarModal()" >Cerrar</button>
+                            <button type="button" class="btn btn-secondary" @click="cerrarModal()">Cerrar</button>
                             <button type="button" v-if="tipoAccion==1" class="btn btn-primary" @click="registrarPersona()">Guardar</button>
                             <button type="button" v-if="tipoAccion==2" class="btn btn-primary" @click="actualizarPersona()">Actualizar</button>
                         </div>
@@ -262,7 +262,7 @@
                 </div>
                 <!-- /.modal-dialog -->
             </div>
-            <!--Fin del modal-->           
+            <!--Fin del modal-->
         </main>
 </template>
 
