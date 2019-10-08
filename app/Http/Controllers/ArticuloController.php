@@ -4,15 +4,12 @@ namespace App\Http\Controllers;
  
 use Illuminate\Http\Request;
 use App\Articulo;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\BD;
-
  
 class ArticuloController extends Controller
 {
     public function index(Request $request)
     {
-       if (!$request->ajax()) return redirect('/');
+        if (!$request->ajax()) return redirect('/');
  
         $buscar = $request->buscar;
         $criterio = $request->criterio;
@@ -41,6 +38,16 @@ class ArticuloController extends Controller
             ],
             'articulos' => $articulos
         ];
+    }
+ 
+    public function buscarArticulo(Request $request){
+        if (!$request->ajax()) return redirect('/');
+ 
+        $filtro = $request->filtro;
+        $articulos = Articulo::where('codigo','=', $filtro)
+        ->select('id','nombre')->orderBy('nombre', 'asc')->take(1)->get();
+ 
+        return ['articulos' => $articulos];
     }
      
     public function store(Request $request)

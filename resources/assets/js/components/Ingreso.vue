@@ -93,7 +93,7 @@
                             <div class="col-md-9">
                                 <div class="form-group">
                                     <label for="">Proveedor(*)</label>
-                                    <v-select class="col-md-9"
+                                    <v-select
                                         :on-search="selectProveedor"
                                         label="nombre"
                                         :options="arrayProveedor"
@@ -137,8 +137,9 @@
                                 <div class="form-group">
                                     <label>Artículo</label>
                                     <div class="form-inline">
-                                        <input type="text" class="form-control" v-model="idarticulo" placeholder="Ingrese artículo">
+                                        <input type="text" class="form-control" v-model="codigo" @keyup.enter="buscarArticulo()" placeholder="Ingrese artículo">
                                         <button class="btn btn-primary">...</button>
+                                        <input type="text" readonly class="form-control" v-model="articulo">
                                     </div>                                    
                                 </div>
                             </div>
@@ -266,6 +267,7 @@
         </main>
 </template>
 
+
 <script>
     import vSelect from 'vue-select';
     export default {
@@ -298,7 +300,13 @@
                 },
                 offset : 3,
                 criterio : 'num_comprobante',
-                buscar : ''
+                buscar : '',
+                arrayArticulo: [],
+                idarticulo: 0,
+                codigo: '',
+                articulo: '',
+                precio: 0,
+                cantidad:0
             }
         },
          components: {
