@@ -173,43 +173,23 @@
                                             <th>Subtotal</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
+                                  <tbody v-if="arrayDetalle.length">
+                                        <tr v-for="detalle in arrayDetalle" :key="detalle.id">
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-sm">
                                                     <i class="icon-close"></i>
                                                 </button>
                                             </td>
-                                            <td>
-                                                Artículo n
+                                            <td v-text="detalle.articulo">
                                             </td>
                                             <td>
-                                                <input type="number" value="3" class="form-control">
+                                                <input v-model="detalle.precio" type="number" value="3" class="form-control">
                                             </td>
                                             <td>
-                                                <input type="number" value="2" class="form-control">
+                                                <input v-model="detalle.cantidad" type="number" value="2" class="form-control">
                                             </td>
                                             <td>
-                                                $ 6.00
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <button type="button" class="btn btn-danger btn-sm">
-                                                    <i class="icon-close"></i>
-                                                </button>
-                                            </td>
-                                            <td>
-                                                Artículo n
-                                            </td>
-                                            <td>
-                                                <input type="number" value="3" class="form-control">
-                                            </td>
-                                            <td>
-                                                <input type="number" value="2" class="form-control">
-                                            </td>
-                                            <td>
-                                                $ 6.00
+                                                {{detalle.precio*detalle.cantidad}}
                                             </td>
                                         </tr>
                                         <tr style="background-color: #CEECF5;">
@@ -218,13 +198,20 @@
                                         </tr>
                                         <tr style="background-color: #CEECF5;">
                                             <td colspan="4" align="right"><strong>Total Impuesto:</strong></td>
-                                            <td>$ 1</td>
+                                            <td>$ 5</td>
                                         </tr>
                                         <tr style="background-color: #CEECF5;">
                                             <td colspan="4" align="right"><strong>Total Neto:</strong></td>
-                                            <td>$ 6</td>
+                                            <td>$ 5</td>
                                         </tr>
-                                    </tbody>                                    
+                                    </tbody>
+                                    <tbody v-else>
+                                        <tr>
+                                            <td colspan="5">
+                                                NO hay artículos agregados
+                                            </td>
+                                        </tr>
+                                    </tbody>                                     
                                 </table>
                             </div>
                         </div>
