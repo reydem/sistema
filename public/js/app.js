@@ -3419,6 +3419,24 @@ __webpack_require__.r(__webpack_exports__);
       me.loading = true;
       me.idproveedor = val1.id;
     },
+    buscarArticulo: function buscarArticulo() {
+      var me = this;
+      var url = './articulo/buscarArticulo?filtro=' + me.codigo;
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayArticulo = respuesta.articulos;
+
+        if (me.arrayArticulo.length > 0) {
+          me.articulo = me.arrayArticulo[0]['nombre'];
+          me.idarticulo = me.arrayArticulo[0]['id'];
+        } else {
+          me.articulo = 'No existe artículo';
+          me.idarticulo = 0;
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
     cambiarPagina: function cambiarPagina(page, buscar, criterio) {
       var me = this; //Actualiza la pagina actual
 
