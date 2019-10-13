@@ -3433,12 +3433,15 @@ __webpack_require__.r(__webpack_exports__);
     },
     agregarDetalle: function agregarDetalle() {
       var me = this;
-      me.arrayDetalle.push({
-        idarticulo: me.idarticulo,
-        articulo: me.articulo,
-        cantidad: me.cantidad,
-        precio: me.precio
-      });
+
+      if (me.idarticulo == 0 || me.cantidad == 0 || me.precio == 0) {} else {
+        me.arrayDetalle.push({
+          idarticulo: me.idarticulo,
+          articulo: me.articulo,
+          cantidad: me.cantidad,
+          precio: me.precio
+        });
+      }
     },
     registrarPersona: function registrarPersona() {
       if (this.validarPersona()) {
@@ -32427,7 +32430,24 @@ var render = function() {
                   _c("div", { staticClass: "form-group row border" }, [
                     _c("div", { staticClass: "col-md-6" }, [
                       _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Artículo")]),
+                        _c("label", [
+                          _vm._v("Artículo "),
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.idarticulo == 0,
+                                  expression: "idarticulo==0"
+                                }
+                              ],
+                              staticStyle: { color: "red" }
+                            },
+                            [_vm._v("(*Seleccione)")]
+                          )
+                        ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-inline" }, [
                           _c("input", {
@@ -32501,7 +32521,24 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-2" }, [
                       _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Precio")]),
+                        _c("label", [
+                          _vm._v("Precio "),
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.precio == 0,
+                                  expression: "precio==0"
+                                }
+                              ],
+                              staticStyle: { color: "red" }
+                            },
+                            [_vm._v("(*Ingrese)")]
+                          )
+                        ]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -32529,7 +32566,24 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-2" }, [
                       _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Cantidad")]),
+                        _c("label", [
+                          _vm._v("Cantidad "),
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.cantidad == 0,
+                                  expression: "cantidad==0"
+                                }
+                              ],
+                              staticStyle: { color: "red" }
+                            },
+                            [_vm._v("(*Ingrese)")]
+                          )
+                        ]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [

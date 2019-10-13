@@ -396,6 +396,11 @@
                             cantidad: me.cantidad,
                             precio: me.precio
                         });
+                        me.codigo="";
+                        me.idarticulo=0;
+                        me.articulo="";
+                        me.cantidad=0;
+                        me.precio=0; 
                     }
                      
             },  
