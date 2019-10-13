@@ -384,24 +384,42 @@
                  me.pagination.current_page = page;
                  //Envia la peticion para actualizar la data de esa pagina
                  me.listarIngreso(page,buscar,criterio);
-             },  
+             },
+              encuentra(id){
+                var sw=0;
+                for(var i=0;i<this.arrayDetalle.length;i++){
+                    if(this.arrayDetalle[i].idarticulo==id){
+                        sw=true;
+                    }
+                }
+                return sw;
+            },  
               agregarDetalle(){
                 let me=this;
                  if(me.idarticulo==0 || me.cantidad==0 || me.precio==0){
                 }
                 else{
-                       me.arrayDetalle.push({
-                            idarticulo: me.idarticulo,
-                            articulo: me.articulo,
-                            cantidad: me.cantidad,
-                            precio: me.precio
-                        });
-                        me.codigo="";
-                        me.idarticulo=0;
-                        me.articulo="";
-                        me.cantidad=0;
-                        me.precio=0; 
-                    }
+                    if(me.encuentra(me.idarticulo)){
+                        swalWithBootstrapButtons.fire({
+                            type: 'error',
+                            title: 'Error...',
+                            text: 'Ese artículo ya se encuentra agregado!',
+                            })
+                    }else{
+                         me.arrayDetalle.push({
+                                idarticulo: me.idarticulo,
+                                articulo: me.articulo,
+                                cantidad: me.cantidad,
+                                precio: me.precio
+                            });
+                            me.codigo="";
+                            me.idarticulo=0;
+                            me.articulo="";
+                            me.cantidad=0;
+                            me.precio=0;
+                        }
+                       
+                }
                      
             },  
              registrarPersona(){

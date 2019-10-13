@@ -3441,6 +3441,11 @@ __webpack_require__.r(__webpack_exports__);
           cantidad: me.cantidad,
           precio: me.precio
         });
+        me.codigo = "";
+        me.idarticulo = 0;
+        me.articulo = "";
+        me.cantidad = 0;
+        me.precio = 0;
       }
     },
     registrarPersona: function registrarPersona() {
