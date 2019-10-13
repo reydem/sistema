@@ -370,6 +370,27 @@
                 me.loading = true;
                 me.idproveedor = val1.id;
             },
+            buscarArticulo(){
+                let me=this;
+                var url= './articulo/buscarArticulo?filtro=' + me.codigo;
+
+                axios.get(url).then(function (response) {
+                    var respuesta= response.data;
+                    me.arrayArticulo = respuesta.articulos;
+
+                    if (me.arrayArticulo.length>0){
+                        me.articulo=me.arrayArticulo[0]['nombre'];
+                        me.idarticulo=me.arrayArticulo[0]['id'];
+                    }
+                    else{
+                        me.articulo='No existe artículo';
+                        me.idarticulo=0;
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
              cambiarPagina(page, buscar, criterio){
                  let me = this;
                  //Actualiza la pagina actual
