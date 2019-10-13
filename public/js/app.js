@@ -3548,63 +3548,11 @@ __webpack_require__.r(__webpack_exports__);
     cerrarModal: function cerrarModal() {
       this.modal = 0;
       this.tituloModal = '';
-      this.nombre = '';
-      this.tipo_documento = 'DNI';
-      this.num_documento = '';
-      this.direccion = '';
-      this.telefono = '';
-      this.email = '';
-      this.usuario = '';
-      this.password = '';
-      this.idrol = 0;
-      this.errorPersona = 0;
     },
-    abrirModal: function abrirModal(modelo, accion) {
-      var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-      this.selectRol();
-
-      switch (modelo) {
-        case "persona":
-          {
-            switch (accion) {
-              case 'registrar':
-                {
-                  this.modal = 1;
-                  this.tituloModal = 'Registrar Usuario';
-                  this.nombre = '';
-                  this.tipo_documento = 'DNI';
-                  this.num_documento = '';
-                  this.direccion = '';
-                  this.telefono = '';
-                  this.email = '';
-                  this.usuario = '';
-                  this.password = '';
-                  this.idrol = 0;
-                  this.tipoAccion = 1;
-                  break;
-                }
-
-              case 'actualizar':
-                {
-                  //console.log(data);
-                  this.modal = 1;
-                  this.tituloModal = 'Actualizar Usuario';
-                  this.tipoAccion = 2;
-                  this.persona_id = data['id'];
-                  this.nombre = data['nombre'];
-                  this.tipo_documento = data['tipo_documento'];
-                  this.num_documento = data['num_documento'];
-                  this.direccion = data['direccion'];
-                  this.telefono = data['telefono'];
-                  this.email = data['email'];
-                  this.usuario = data['usuario'];
-                  this.password = data['password'];
-                  this.idrol = data['idrol'];
-                  break;
-                }
-            }
-          }
-      }
+    abrirModal: function abrirModal() {
+      // this.arrayArticulo=[];
+      this.modal = 1;
+      this.tituloModal = 'Seleccione uno o varios artículos';
     },
     desactivarUsuario: function desactivarUsuario(id) {
       var _this = this;
@@ -32529,9 +32477,18 @@ var render = function() {
                             }
                           }),
                           _vm._v(" "),
-                          _c("button", { staticClass: "btn btn-primary" }, [
-                            _vm._v("...")
-                          ]),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              on: {
+                                click: function($event) {
+                                  return _vm.abrirModal()
+                                }
+                              }
+                            },
+                            [_vm._v("...")]
+                          ),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
