@@ -135,7 +135,7 @@
                         <div class="form-group row border">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Artículo</label>
+                                    <label>Artículo <span style="color:red;" v-show="idarticulo==0">(*Seleccione)</span></label>
                                     <div class="form-inline">
                                         <input type="text" class="form-control" v-model="codigo" @keyup.enter="buscarArticulo()" placeholder="Ingrese artículo">
                                         <button class="btn btn-primary">...</button>
@@ -145,13 +145,13 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <label>Precio</label>
+                                    <label>Precio <span style="color:red;" v-show="precio==0">(*Ingrese)</span></label>
                                     <input type="number" value="0" step="any" class="form-control" v-model="precio">
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <label>Cantidad</label>
+                                    <label>Cantidad <span style="color:red;" v-show="cantidad==0">(*Ingrese)</span></label>
                                     <input type="number" value="0" class="form-control" v-model="cantidad">
                                 </div>
                             </div>
@@ -387,12 +387,17 @@
              },  
               agregarDetalle(){
                 let me=this;
-                 me.arrayDetalle.push({
+                 if(me.idarticulo==0 || me.cantidad==0 || me.precio==0){
+                }
+                else{
+                       me.arrayDetalle.push({
                             idarticulo: me.idarticulo,
                             articulo: me.articulo,
                             cantidad: me.cantidad,
                             precio: me.precio
-                        });  
+                        });
+                    }
+                     
             },  
              registrarPersona(){
                 if (this.validarPersona()){
