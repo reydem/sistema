@@ -157,7 +157,7 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <button class="btn btn-success form-control btnagregar"><i class="icon-plus"></i></button>
+                                    <button @click="agregarDetalle()" class="btn btn-success form-control btnagregar"><i class="icon-plus"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -384,7 +384,16 @@
                  me.pagination.current_page = page;
                  //Envia la peticion para actualizar la data de esa pagina
                  me.listarIngreso(page,buscar,criterio);
-             },    
+             },  
+              agregarDetalle(){
+                let me=this;
+                 me.arrayDetalle.push({
+                            idarticulo: me.idarticulo,
+                            articulo: me.articulo,
+                            cantidad: me.cantidad,
+                            precio: me.precio
+                        });  
+            },  
              registrarPersona(){
                 if (this.validarPersona()){
                     return;
