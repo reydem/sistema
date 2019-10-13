@@ -192,17 +192,17 @@
                                                 {{detalle.precio*detalle.cantidad}}
                                             </td>
                                         </tr>
-                                        <tr style="background-color: #CEECF5;">
+                                       <tr style="background-color: #CEECF5;">
                                             <td colspan="4" align="right"><strong>Total Parcial:</strong></td>
-                                            <td>$ 5</td>
+                                            <td>$ {{totalParcial=(total-totalImpuesto).toFixed(2)}}</td>
                                         </tr>
                                         <tr style="background-color: #CEECF5;">
                                             <td colspan="4" align="right"><strong>Total Impuesto:</strong></td>
-                                            <td>$ 5</td>
+                                            <td>$ {{totalImpuesto=((total*impuesto)/(1+impuesto)).toFixed(2)}}</td>
                                         </tr>
                                         <tr style="background-color: #CEECF5;">
                                             <td colspan="4" align="right"><strong>Total Neto:</strong></td>
-                                            <td>$ 5</td>
+                                            <td>$ {{total=calcularTotal}}</td>
                                         </tr>
                                     </tbody>
                                     <tbody v-else>
@@ -268,6 +268,8 @@
                 num_comprobante : '',
                 impuesto: 0.19,
                 total:0.0,
+                totalImpuesto: 0.0,
+                totalParcial: 0.0,
                 arrayIngreso : [],
                 arrayProveedor: [],
                 arrayDetalle : [],
@@ -322,7 +324,14 @@
                     from++;
                 }
                 return pageArrray;
-            }
+            },
+              calcularTotal: function(){
+                var resultado=0.0;
+                for(var i=0;i<this.arrayDetalle.length;i++){
+                    resultado=resultado+(this.arrayDetalle[i].precio*this.arrayDetalle[i].cantidad)
+                }
+                return resultado;
+            }            
         },
         methods : {
              listarIngreso (page,buscar,criterio){
