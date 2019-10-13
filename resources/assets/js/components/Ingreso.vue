@@ -400,7 +400,7 @@
                 }
                 else{
                     if(me.encuentra(me.idarticulo)){
-                        swalWithBootstrapButtons.fire({
+                        Swal.fire({
                             type: 'error',
                             title: 'Error...',
                             text: 'Ese artículo ya se encuentra agregado!',

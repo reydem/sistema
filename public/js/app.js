@@ -3431,21 +3431,40 @@ __webpack_require__.r(__webpack_exports__);
 
       me.listarIngreso(page, buscar, criterio);
     },
+    encuentra: function encuentra(id) {
+      var sw = 0;
+
+      for (var i = 0; i < this.arrayDetalle.length; i++) {
+        if (this.arrayDetalle[i].idarticulo == id) {
+          sw = true;
+        }
+      }
+
+      return sw;
+    },
     agregarDetalle: function agregarDetalle() {
       var me = this;
 
       if (me.idarticulo == 0 || me.cantidad == 0 || me.precio == 0) {} else {
-        me.arrayDetalle.push({
-          idarticulo: me.idarticulo,
-          articulo: me.articulo,
-          cantidad: me.cantidad,
-          precio: me.precio
-        });
-        me.codigo = "";
-        me.idarticulo = 0;
-        me.articulo = "";
-        me.cantidad = 0;
-        me.precio = 0;
+        if (me.encuentra(me.idarticulo)) {
+          Swal.fire({
+            type: 'error',
+            title: 'Error...',
+            text: 'Ese artículo ya se encuentra agregado!'
+          });
+        } else {
+          me.arrayDetalle.push({
+            idarticulo: me.idarticulo,
+            articulo: me.articulo,
+            cantidad: me.cantidad,
+            precio: me.precio
+          });
+          me.codigo = "";
+          me.idarticulo = 0;
+          me.articulo = "";
+          me.cantidad = 0;
+          me.precio = 0;
+        }
       }
     },
     registrarPersona: function registrarPersona() {
