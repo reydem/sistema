@@ -3643,7 +3643,8 @@ __webpack_require__.r(__webpack_exports__);
       return this.errorIngreso;
     },
     mostrarDetalle: function mostrarDetalle() {
-      this.listado = 0;
+      var me = this;
+      me.listado = 0;
       me.idproveedor = 0;
       me.tipo_comprobante = 'BOLETA';
       me.serie_comprobante = '';
@@ -3655,6 +3656,7 @@ __webpack_require__.r(__webpack_exports__);
       me.cantidad = 0;
       me.precio = 0;
       me.arrayDetalle = [];
+      ;
     },
     ocultarDetalle: function ocultarDetalle() {
       this.listado = 1;
@@ -3688,12 +3690,11 @@ __webpack_require__.r(__webpack_exports__);
         reverseButtons: true
       }).then(function (result) {
         if (result.value) {
-          var _me = _this;
+          var me = _this;
           axios.put('./user/desactivar', {
             'id': id
           }).then(function (response) {
-            _me.listarPersona(1, '', 'nombre');
-
+            me.listarPersona(1, '', 'nombre');
             swalWithBootstrapButtons.fire('Activado', 'El Usuario ha sido actiavo con éxtio.', 'success');
           })["catch"](function (error) {
             console.log(error);
@@ -3722,12 +3723,11 @@ __webpack_require__.r(__webpack_exports__);
         reverseButtons: true
       }).then(function (result) {
         if (result.value) {
-          var _me2 = _this2;
+          var me = _this2;
           axios.put('./user/activar', {
             'id': id
           }).then(function (response) {
-            _me2.listarPersona(1, '', 'nombre');
-
+            me.listarPersona(1, '', 'nombre');
             swalWithBootstrapButtons.fire('Desactivado', 'El usuario ha sido desactiavo con éxtio.', 'success');
           })["catch"](function (error) {
             console.log(error);
