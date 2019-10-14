@@ -3590,18 +3590,19 @@ __webpack_require__.r(__webpack_exports__);
         'total': this.total,
         'data': this.arrayDetalle
       }).then(function (response) {
-        // me.listado=1;
-        me.listarIngreso(1, '', 'num_comprobante'); // me.idproveedor=0;
-        // me.tipo_comprobante='BOLETA';
-        // me.serie_comprobante='';
-        // me.num_comprobante='';
-        // me.impuesto=0.18;
-        // me.total=0.0;
-        // me.idarticulo=0;
-        // me.articulo='';
-        // me.cantidad=0;
-        // me.precio=0;
-        // me.arrayDetalle=[];
+        me.listado = 1;
+        me.listarIngreso(1, '', 'num_comprobante');
+        me.idproveedor = 0;
+        me.tipo_comprobante = 'BOLETA';
+        me.serie_comprobante = '';
+        me.num_comprobante = '';
+        me.impuesto = 0.19;
+        me.total = 0.0;
+        me.idarticulo = 0;
+        me.articulo = '';
+        me.cantidad = 0;
+        me.precio = 0;
+        me.arrayDetalle = [];
       })["catch"](function (error) {
         console.log(error);
       });
@@ -3643,6 +3644,17 @@ __webpack_require__.r(__webpack_exports__);
     },
     mostrarDetalle: function mostrarDetalle() {
       this.listado = 0;
+      me.idproveedor = 0;
+      me.tipo_comprobante = 'BOLETA';
+      me.serie_comprobante = '';
+      me.num_comprobante = '';
+      me.impuesto = 0.19;
+      me.total = 0.0;
+      me.idarticulo = 0;
+      me.articulo = '';
+      me.cantidad = 0;
+      me.precio = 0;
+      me.arrayDetalle = [];
     },
     ocultarDetalle: function ocultarDetalle() {
       this.listado = 1;
@@ -3676,11 +3688,12 @@ __webpack_require__.r(__webpack_exports__);
         reverseButtons: true
       }).then(function (result) {
         if (result.value) {
-          var me = _this;
+          var _me = _this;
           axios.put('./user/desactivar', {
             'id': id
           }).then(function (response) {
-            me.listarPersona(1, '', 'nombre');
+            _me.listarPersona(1, '', 'nombre');
+
             swalWithBootstrapButtons.fire('Activado', 'El Usuario ha sido actiavo con éxtio.', 'success');
           })["catch"](function (error) {
             console.log(error);
@@ -3709,11 +3722,12 @@ __webpack_require__.r(__webpack_exports__);
         reverseButtons: true
       }).then(function (result) {
         if (result.value) {
-          var me = _this2;
+          var _me2 = _this2;
           axios.put('./user/activar', {
             'id': id
           }).then(function (response) {
-            me.listarPersona(1, '', 'nombre');
+            _me2.listarPersona(1, '', 'nombre');
+
             swalWithBootstrapButtons.fire('Desactivado', 'El usuario ha sido desactiavo con éxtio.', 'success');
           })["catch"](function (error) {
             console.log(error);
