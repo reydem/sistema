@@ -3634,7 +3634,7 @@ __webpack_require__.r(__webpack_exports__);
       this.tituloModal = '';
     },
     abrirModal: function abrirModal() {
-      // this.arrayArticulo=[];
+      this.arrayArticulo = [];
       this.modal = 1;
       this.tituloModal = 'Seleccione uno o varios artículos';
     },
