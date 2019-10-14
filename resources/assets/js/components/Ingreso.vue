@@ -594,7 +594,7 @@
                 this.tituloModal='';
             },
             abrirModal(){               
-                // this.arrayArticulo=[];
+                this.arrayArticulo=[];
                 this.modal = 1;
                 this.tituloModal = 'Seleccione uno o varios artículos';
             },
