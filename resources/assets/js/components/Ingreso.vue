@@ -630,47 +630,45 @@
                 this.modal = 1;
                 this.tituloModal = 'Seleccione uno o varios artículos';
             },
-            desactivarUsuario(id){
-                const swalWithBootstrapButtons = Swal.mixin({
-                        customClass: {
-                            confirmButton: 'btn btn-success',
-                            cancelButton: 'btn btn-danger'
-                        },
-                        buttonsStyling: false,
-                        })
+          desactivarIngreso(id){
+               Swal.fire({
+                title: 'Esta seguro de anular este ingreso?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceptar!',
+                cancelButtonText: 'Cancelar',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false,
+                reverseButtons: true
+                }).then((result) => {
+                if (result.value) {
+                    let me = this;
 
-                        swalWithBootstrapButtons.fire({
-                        title: '¿Estas seguro de desactivar este usuario?',
-                        text: "You won't be able to revert this!",
-                        type: 'warning',
-                        showCancelButton: true,
-                        confirmButtonText: 'Accetar',
-                        cancelButtonText: 'Cancelar',
-                        reverseButtons: true
-                        }).then((result) => {
-                        if (result.value) {
-                            let me = this;
-                            axios.put('./user/desactivar', {
-                                'id' : id                            
-                            }).then(function (response) {
-                                  me.listarPersona(1, '', 'nombre');
-                                  swalWithBootstrapButtons.fire(
-                            'Activado',
-                            'El Usuario ha sido actiavo con éxtio.',
-                            'success'
-                            )
-                            }).catch(function (error) {
-                                console.log(error);
-                            });
-                            
-                        } else if (
-                            // Read more about handling dismissals
-                            result.dismiss === Swal.DismissReason.cancel
-                        ) {
-                                                    }
-                        })
+                    axios.put('./ingreso/desactivar',{
+                        'id': id
+                    }).then(function (response) {
+                        me.listarIngreso(1,'','num_comprobante');
+                        Swal.fire(
+                        'Anulado!',
+                        'El ingreso ha sido anulado con éxito.',
+                        'success'
+                        )
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
                     
-                 },
+                    
+                } else if (
+                    // Read more about handling dismissals
+                    result.dismiss === swal.DismissReason.cancel
+                ) {
+                    
+                }
+                }) 
+            },
 //                  DELIMITER //
 // CREATE TRIGGER tr_updStockIngreso AFTER INSERT ON detalle_ingresos
 //  FOR EACH ROW BEGIN
@@ -679,46 +677,7 @@
 // END
 // //
 // DELIMITER ;
-                 activarUsuario(id){
-                       const swalWithBootstrapButtons = Swal.mixin({
-                        customClass: {
-                            confirmButton: 'btn btn-success',
-                            cancelButton: 'btn btn-danger'
-                        },
-                        buttonsStyling: false,
-                        })
-
-                        swalWithBootstrapButtons.fire({
-                        title: '¿Estas seguro de activar este usuario?',
-                        text: "You won't be able to revert this!",
-                        type: 'warning',
-                        showCancelButton: true,
-                        confirmButtonText: 'Accetar',
-                        cancelButtonText: 'Cancelar',
-                        reverseButtons: true
-                        }).then((result) => {
-                        if (result.value) {
-                            let me = this;
-                            axios.put('./user/activar', {
-                                'id' : id                            
-                            }).then(function (response) {
-                                  me.listarPersona(1, '', 'nombre');
-                                  swalWithBootstrapButtons.fire(
-                            'Desactivado',
-                            'El usuario ha sido desactiavo con éxtio.',
-                            'success'
-                            )
-                            }).catch(function (error) {
-                                console.log(error);
-                            });
-                            
-                        } else if (
-                            // Read more about handling dismissals
-                            result.dismiss === Swal.DismissReason.cancel
-                        ) {
-                                                    }
-                        })
-                 }
+             
         },
         mounted() {
             this.listarIngreso(1,this.buscar,this.criterio);
