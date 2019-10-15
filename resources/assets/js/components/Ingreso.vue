@@ -315,7 +315,6 @@
                         <div class="form-group row">
                             <div class="col-md-12">
                                 <button type="button" @click="ocultarDetalle()" class="btn btn-secondary">Cerrar</button>
-                                
                             </div>
                         </div>
                     </div>
@@ -412,6 +411,7 @@
             return{
                 ingreso_id: 0,
                 idproveedor:0,
+                proveedor:'',
                 nombre : '',
                 tipo_comprobante : 'BOLETA',
                 serie_comprobante : '',
@@ -710,7 +710,7 @@
                 this.listado=1;
             },
               verIngreso(id){
-                let me=this;
+                // let me=this;
                 me.listado=2;
                 
             //     //Obtener los datos del ingreso
@@ -743,7 +743,7 @@
             //     .catch(function (error) {
             //         console.log(error);
             //     });               
-            // },
+            },
             cerrarModal(){
                 this.modal=0;
                 this.tituloModal='';
