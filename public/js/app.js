@@ -3750,33 +3750,32 @@ __webpack_require__.r(__webpack_exports__);
       this.listado = 1;
     },
     verIngreso: function verIngreso(id) {
-      // let me=this;
-      me.listado = 2; //     //Obtener los datos del ingreso
-      //     var arrayIngresoT=[];
-      //     var url= './ingreso/obtenerCabecera?id=' + id;
-      //     axios.get(url).then(function (response) {
-      //         var respuesta= response.data;
-      //         arrayIngresoT = respuesta.ingreso;
-      //         me.proveedor = arrayIngresoT[0]['nombre'];
-      //         me.tipo_comprobante=arrayIngresoT[0]['tipo_comprobante'];
-      //         me.serie_comprobante=arrayIngresoT[0]['serie_comprobante'];
-      //         me.num_comprobante=arrayIngresoT[0]['num_comprobante'];
-      //         me.impuesto=arrayIngresoT[0]['impuesto'];
-      //         me.total=arrayIngresoT[0]['total'];
-      //     })
-      //     .catch(function (error) {
-      //         console.log(error);
-      //     });
-      //     //Obtener los datos de los detalles 
-      //     var urld= './ingreso/obtenerDetalles?id=' + id;
-      //     axios.get(urld).then(function (response) {
-      //         console.log(response);
-      //         var respuesta= response.data;
-      //         me.arrayDetalle = respuesta.detalles;
-      //     })
-      //     .catch(function (error) {
-      //         console.log(error);
-      //     });               
+      var me = this;
+      me.listado = 2; //Obtener los datos del ingreso
+
+      var arrayIngresoT = [];
+      var url = './ingreso/obtenerCabecera?id=' + id;
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        arrayIngresoT = respuesta.ingreso;
+        me.proveedor = arrayIngresoT[0]['nombre'];
+        me.tipo_comprobante = arrayIngresoT[0]['tipo_comprobante'];
+        me.serie_comprobante = arrayIngresoT[0]['serie_comprobante'];
+        me.num_comprobante = arrayIngresoT[0]['num_comprobante'];
+        me.impuesto = arrayIngresoT[0]['impuesto'];
+        me.total = arrayIngresoT[0]['total'];
+      })["catch"](function (error) {
+        console.log(error);
+      }); //Obtener los datos de los detalles 
+
+      var urld = './ingreso/obtenerDetalles?id=' + id;
+      axios.get(urld).then(function (response) {
+        console.log(response);
+        var respuesta = response.data;
+        me.arrayDetalle = respuesta.detalles;
+      })["catch"](function (error) {
+        console.log(error);
+      });
     },
     cerrarModal: function cerrarModal() {
       this.modal = 0;
@@ -3804,12 +3803,11 @@ __webpack_require__.r(__webpack_exports__);
         reverseButtons: true
       }).then(function (result) {
         if (result.value) {
-          var _me = _this;
+          var me = _this;
           axios.put('./ingreso/desactivar', {
             'id': id
           }).then(function (response) {
-            _me.listarIngreso(1, '', 'num_comprobante');
-
+            me.listarIngreso(1, '', 'num_comprobante');
             Swal.fire('Anulado!', 'El ingreso ha sido anulado con éxito.', 'success');
           })["catch"](function (error) {
             console.log(error);
