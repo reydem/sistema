@@ -103,8 +103,6 @@ Route::group(['middleware'=>['auth']],function(){
         Route::put('/user/desactivar', 'UserController@desactivar');
         Route::put('/user/activar', 'UserController@activar');
 
-        
-
       }); 
 
 });
