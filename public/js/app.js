@@ -5270,7 +5270,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -36599,7 +36598,7 @@ var render = function() {
                 _c("div", { staticClass: "card-body" }, [
                   _c("div", { staticClass: "form-group row" }, [
                     _c("div", { staticClass: "col-md-6" }, [
-                      _c("div", { staticClass: "input-group" }, [
+                      _c("div", { attrs: { cl: "", ass: "input-group" } }, [
                         _c(
                           "select",
                           {

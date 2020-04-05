@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <div class="input-group">
+                                <div cl ass="input-group">
                                     <select class="form-control col-md-3" v-model="criterio">
                                       <option value="tipo_comprobante">Tipo Comprobante</option>
                                       <option value="num_comprobante">Número Comprobante</option>
@@ -100,7 +100,6 @@
                                         placeholder="Buscar Clientes..."
                                         :onChange="getDatosCliente"                                        
                                     >
-
                                     </v-select>
                                 </div>
                             </div>
