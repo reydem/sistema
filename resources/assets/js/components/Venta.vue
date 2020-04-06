@@ -613,9 +613,9 @@
                         }); 
                     }
             }, 
-             listarArticulo(buscar,criterio){
+             listarArticulo (buscar,criterio){
                 let me=this;
-                var url= './articulo/listarArticulo?buscar='+ buscar + '&criterio='+ criterio;
+                var url= './articulo/listarArticuloVenta?buscar='+ buscar + '&criterio='+ criterio;
                 axios.get(url).then(function (response) {
                     var respuesta= response.data;
                     me.arrayArticulo = respuesta.articulos.data;
@@ -623,7 +623,7 @@
                 .catch(function (error) {
                     console.log(error);
                 });
-            }, 
+            },
             registrarIngreso(){
                 if (this.validarIngreso()){
                     return;
