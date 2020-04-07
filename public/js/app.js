@@ -5354,7 +5354,7 @@ __webpack_require__.r(__webpack_exports__);
       var resultado = 0.0;
 
       for (var i = 0; i < this.arrayDetalle.length; i++) {
-        resultado = resultado + this.arrayDetalle[i].precio * this.arrayDetalle[i].cantidad;
+        resultado = resultado + (this.arrayDetalle[i].precio * this.arrayDetalle[i].cantidad - this.arrayDetalle[i].descuento);
       }
 
       return resultado;
@@ -37501,7 +37501,9 @@ var render = function() {
                                         _vm._v(
                                           "\n                                        " +
                                             _vm._s(
-                                              detalle.precio * detalle.cantidad
+                                              detalle.precio *
+                                                detalle.cantidad -
+                                                detalle.descuento
                                             ) +
                                             "\n                                    "
                                         )

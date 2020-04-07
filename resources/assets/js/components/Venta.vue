@@ -201,9 +201,11 @@
                                                 <input v-model="detalle.precio" type="number" class="form-control">
                                             </td>
                                             <td>
+                                                <span style="color:red;" v-show="detalle.cantidad>detalle.stock">Stock: {{detalle.stock}}</span>
                                                 <input v-model="detalle.cantidad" type="number" class="form-control">
                                             </td>
                                             <td>
+                                                <span style="color:red;" v-show="detalle.descuento>(detalle.precio*detalle.cantidad)">Descuento superior</span>
                                                 <input v-model="detalle.descuento" type="number" class="form-control">
                                             </td>
                                             <td>
