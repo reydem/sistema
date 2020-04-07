@@ -5486,7 +5486,9 @@ __webpack_require__.r(__webpack_exports__);
           idarticulo: data['id'],
           articulo: data['nombre'],
           cantidad: 1,
-          precio: 1
+          precio: data['precio_venta'],
+          descuento: 0,
+          stock: data['stock']
         });
       }
     },

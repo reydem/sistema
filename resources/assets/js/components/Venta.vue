@@ -207,7 +207,7 @@
                                                 <input v-model="detalle.descuento" type="number" class="form-control">
                                             </td>
                                             <td>
-                                                {{detalle.precio*detalle.cantidad}}
+                                                {{detalle.precio*detalle.cantidad-detalle.descuento}}
                                             </td>
                                         </tr>
                                         <tr style="background-color: #CEECF5;">
@@ -486,7 +486,7 @@
               calcularTotal: function(){
                 var resultado=0.0;
                 for(var i=0;i<this.arrayDetalle.length;i++){
-                    resultado=resultado+(this.arrayDetalle[i].precio*this.arrayDetalle[i].cantidad)
+                    resultado=resultado+(this.arrayDetalle[i].precio*this.arrayDetalle[i].cantidad-this.arrayDetalle[i].descuento)
                 }
                 return resultado;
             }            
