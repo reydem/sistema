@@ -567,9 +567,9 @@
                 let me = this;
                 me.arrayDetalle.splice(index, 1);
             },  
-              agregarDetalle(){
+               agregarDetalle(){
                 let me=this;
-                 if(me.idarticulo==0 || me.cantidad==0 || me.precio==0){
+                if(me.idarticulo==0 || me.cantidad==0 || me.precio==0){
                 }
                 else{
                     if(me.encuentra(me.idarticulo)){
@@ -578,22 +578,38 @@
                             title: 'Error...',
                             text: 'Ese artículo ya se encuentra agregado!',
                             })
-                    }else{
-                         me.arrayDetalle.push({
+                    }
+                    else{
+                       if(me.cantidad>me.stock){
+                           Swal.fire({
+                            type: 'error',
+                            title: 'Error...',
+                            text: 'NO hay stock disponible!',
+                            })
+                       } 
+                       else{
+                           me.arrayDetalle.push({
                                 idarticulo: me.idarticulo,
                                 articulo: me.articulo,
                                 cantidad: me.cantidad,
-                                precio: me.precio
+                                precio: me.precio,
+                                descuento: me.descuento,
+                                stock: me.stock
                             });
                             me.codigo="";
                             me.idarticulo=0;
                             me.articulo="";
                             me.cantidad=0;
                             me.precio=0;
-                        }
-                       
+                            me.descuento=0;
+                            me.stock=0
+                       }
+                    }
+                    
                 }
-                     
+
+                
+
             },
             agregarDetalleModal(data =[]){
                 let me=this;
