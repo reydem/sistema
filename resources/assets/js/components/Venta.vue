@@ -678,31 +678,31 @@
                     console.log(error);
                 });
             },
-            // actualizarPersona(){
-            //        if (this.validarPersona()) {
-            //         return;
-            //     }
+            actualizarPersona(){
+                   if (this.validarPersona()) {
+                    return;
+                }
 
-            //     let me = this;
-            //       axios.post('./user/actualizar', {
-            //         'nombre' : this.nombre,
-            //         'tipo_documento': this.tipo_documento,
-            //         'num_documento': this.num_documento,
-            //         'direccion': this.direccion,
-            //         'telefono': this.telefono,
-            //         'email': this.email,
-            //         'usuario': this.usuario,
-            //         'password' : this.password,
-            //         'idrol': this.idrol,
-            //         'id': this.persona_id
+                let me = this;
+                  axios.post('./user/actualizar', {
+                    'nombre' : this.nombre,
+                    'tipo_documento': this.tipo_documento,
+                    'num_documento': this.num_documento,
+                    'direccion': this.direccion,
+                    'telefono': this.telefono,
+                    'email': this.email,
+                    'usuario': this.usuario,
+                    'password' : this.password,
+                    'idrol': this.idrol,
+                    'id': this.persona_id
                    
-            //     }).then(function (response) {
-            //         me.cerrarModal();
-            //         me.listarPersona(1, '', 'nombre');
-            //     }).catch(function (error) {
-            //         console.log(error);
-            //     });
-            // },
+                }).then(function (response) {
+                    me.cerrarModal();
+                    me.listarPersona(1, '', 'nombre');
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
              validarVenta(){
                 let me=this;
                 me.errorVenta=0;
