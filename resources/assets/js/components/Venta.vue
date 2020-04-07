@@ -640,15 +640,15 @@
                     console.log(error);
                 });
             },
-            registrarIngreso(){
-                if (this.validarIngreso()){
+              registrarVenta(){
+                if (this.validarVenta()){
                     return;
                 }
                 
                 let me = this;
 
-                axios.post('./ingreso/registrar',{
-                    'idproveedor': this.idproveedor,
+                axios.post('./venta/registrar',{
+                    'idcliente': this.idcliente,
                     'tipo_comprobante': this.tipo_comprobante,
                     'serie_comprobante' : this.serie_comprobante,
                     'num_comprobante' : this.num_comprobante,
@@ -658,61 +658,73 @@
 
                 }).then(function (response) {
                     me.listado=1;
-                    me.listarIngreso(1,'','num_comprobante');
-                    me.idproveedor=0;
+                    me.listarVenta(1,'','num_comprobante');
+                    me.idcliente=0;
                     me.tipo_comprobante='BOLETA';
                     me.serie_comprobante='';
                     me.num_comprobante='';
-                    me.impuesto=0.19;
+                    me.impuesto=0.18;
                     me.total=0.0;
                     me.idarticulo=0;
                     me.articulo='';
                     me.cantidad=0;
                     me.precio=0;
+                    me.stock=0;
+                    me.codigo='';
+                    me.descuento=0;
                     me.arrayDetalle=[];
 
                 }).catch(function (error) {
                     console.log(error);
                 });
             },
-            actualizarPersona(){
-                   if (this.validarPersona()) {
-                    return;
-                }
+            // actualizarPersona(){
+            //        if (this.validarPersona()) {
+            //         return;
+            //     }
 
-                let me = this;
-                  axios.post('./user/actualizar', {
-                    'nombre' : this.nombre,
-                    'tipo_documento': this.tipo_documento,
-                    'num_documento': this.num_documento,
-                    'direccion': this.direccion,
-                    'telefono': this.telefono,
-                    'email': this.email,
-                    'usuario': this.usuario,
-                    'password' : this.password,
-                    'idrol': this.idrol,
-                    'id': this.persona_id
+            //     let me = this;
+            //       axios.post('./user/actualizar', {
+            //         'nombre' : this.nombre,
+            //         'tipo_documento': this.tipo_documento,
+            //         'num_documento': this.num_documento,
+            //         'direccion': this.direccion,
+            //         'telefono': this.telefono,
+            //         'email': this.email,
+            //         'usuario': this.usuario,
+            //         'password' : this.password,
+            //         'idrol': this.idrol,
+            //         'id': this.persona_id
                    
-                }).then(function (response) {
-                    me.cerrarModal();
-                    me.listarPersona(1, '', 'nombre');
-                }).catch(function (error) {
-                    console.log(error);
+            //     }).then(function (response) {
+            //         me.cerrarModal();
+            //         me.listarPersona(1, '', 'nombre');
+            //     }).catch(function (error) {
+            //         console.log(error);
+            //     });
+            // },
+             validarVenta(){
+                let me=this;
+                me.errorVenta=0;
+                me.errorMostrarMsjVenta =[];
+                var art;
+                
+                me.arrayDetalle.map(function(x){
+                    if (x.cantidad>x.stock){
+                        art=x.articulo + " con stock insuficiente";
+                        me.errorMostrarMsjVenta.push(art);
+                    }
                 });
-            },
-            validarIngreso(){
-                this.errorIngreso=0;
-                this.errorMostrarMsjIngreso =[];
 
-                if (this.idproveedor==0) this.errorMostrarMsjIngreso.push("Seleccione un Proveedor");
-                if (this.tipo_comprobante==0) this.errorMostrarMsjIngreso.push("Seleccione el comprobante");
-                if (!this.num_comprobante) this.errorMostrarMsjIngreso.push("Ingrese el número de comprobante");
-                if (!this.impuesto) this.errorMostrarMsjIngreso.push("Ingrese el impuesto de compra");
-                if (this.arrayDetalle.length<=0) this.errorMostrarMsjIngreso.push("Ingrese detalles");
+                if (me.idcliente==0) me.errorMostrarMsjVenta.push("Seleccione un Cliente");
+                if (me.tipo_comprobante==0) me.errorMostrarMsjVenta.push("Seleccione el comprobante");
+                if (!me.num_comprobante) me.errorMostrarMsjVenta.push("Ingrese el número de comprobante");
+                if (!me.impuesto) me.errorMostrarMsjVenta.push("Ingrese el impuesto de compra");
+                if (me.arrayDetalle.length<=0) me.errorMostrarMsjVenta.push("Ingrese detalles");
 
-                if (this.errorMostrarMsjIngreso.length) this.errorIngreso = 1;
+                if (me.errorMostrarMsjVenta.length) me.errorVenta = 1;
 
-                return this.errorIngreso;
+                return me.errorVenta;
             },
              mostrarDetalle(){
                 let me=this;
