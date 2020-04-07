@@ -5445,17 +5445,29 @@ __webpack_require__.r(__webpack_exports__);
             text: 'Ese artículo ya se encuentra agregado!'
           });
         } else {
-          me.arrayDetalle.push({
-            idarticulo: me.idarticulo,
-            articulo: me.articulo,
-            cantidad: me.cantidad,
-            precio: me.precio
-          });
-          me.codigo = "";
-          me.idarticulo = 0;
-          me.articulo = "";
-          me.cantidad = 0;
-          me.precio = 0;
+          if (me.cantidad > me.stock) {
+            Swal.fire({
+              type: 'error',
+              title: 'Error...',
+              text: 'NO hay stock disponible!'
+            });
+          } else {
+            me.arrayDetalle.push({
+              idarticulo: me.idarticulo,
+              articulo: me.articulo,
+              cantidad: me.cantidad,
+              precio: me.precio,
+              descuento: me.descuento,
+              stock: me.stock
+            });
+            me.codigo = "";
+            me.idarticulo = 0;
+            me.articulo = "";
+            me.cantidad = 0;
+            me.precio = 0;
+            me.descuento = 0;
+            me.stock = 0;
+          }
         }
       }
     },
@@ -5480,7 +5492,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     listarArticulo: function listarArticulo(buscar, criterio) {
       var me = this;
-      var url = './articulo/listarArticulo?buscar=' + buscar + '&criterio=' + criterio;
+      var url = './articulo/listarArticuloVenta?buscar=' + buscar + '&criterio=' + criterio;
       axios.get(url).then(function (response) {
         var respuesta = response.data;
         me.arrayArticulo = respuesta.articulos.data;

@@ -604,12 +604,8 @@
                             me.descuento=0;
                             me.stock=0
                        }
-                    }
-                    
+                    }   
                 }
-
-                
-
             },
             agregarDetalleModal(data =[]){
                 let me=this;
