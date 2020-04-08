@@ -791,9 +791,9 @@
                 this.modal = 1;
                 this.tituloModal = 'Seleccione uno o varios artículos';
             },
-          desactivarIngreso(id){
+          desactivarVenta(id){
                Swal.fire({
-                title: 'Esta seguro de anular este ingreso?',
+                title: 'Esta seguro de anular esta venta?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -808,13 +808,13 @@
                 if (result.value) {
                     let me = this;
 
-                    axios.put('./ingreso/desactivar',{
+                    axios.put('./venta/desactivar',{
                         'id': id
                     }).then(function (response) {
-                        me.listarIngreso(1,'','num_comprobante');
+                        me.listarVenta(1,'','num_comprobante');
                         Swal.fire(
                         'Anulado!',
-                        'El ingreso ha sido anulado con éxito.',
+                        'La venta ha sido anulada con éxito.',
                         'success'
                         )
                     }).catch(function (error) {
