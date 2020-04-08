@@ -5641,11 +5641,11 @@ __webpack_require__.r(__webpack_exports__);
       this.modal = 1;
       this.tituloModal = 'Seleccione uno o varios artículos';
     },
-    desactivarIngreso: function desactivarIngreso(id) {
+    desactivarVenta: function desactivarVenta(id) {
       var _this = this;
 
       Swal.fire({
-        title: 'Esta seguro de anular este ingreso?',
+        title: 'Esta seguro de anular esta venta?',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -5659,11 +5659,11 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (result.value) {
           var me = _this;
-          axios.put('./ingreso/desactivar', {
+          axios.put('./venta/desactivar', {
             'id': id
           }).then(function (response) {
-            me.listarIngreso(1, '', 'num_comprobante');
-            Swal.fire('Anulado!', 'El ingreso ha sido anulado con éxito.', 'success');
+            me.listarVenta(1, '', 'num_comprobante');
+            Swal.fire('Anulado!', 'La venta ha sido anulada con éxito.', 'success');
           })["catch"](function (error) {
             console.log(error);
           });
