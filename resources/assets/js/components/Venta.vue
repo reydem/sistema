@@ -45,11 +45,14 @@
                                         <th>Estado</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                 <tbody>
                                     <tr v-for="venta in arrayVenta" :key="venta.id">
                                         <td>
                                             <button type="button" @click="verVenta(venta.id)" class="btn btn-success btn-sm">
                                             <i class="icon-eye"></i>
+                                            </button> &nbsp;
+                                            <button type="button" @click="pdfVenta(venta.id)" class="btn btn-info btn-sm">
+                                            <i class="icon-doc"></i>
                                             </button> &nbsp;
                                             <template v-if="venta.estado=='Registrado'">
                                                 <button type="button" class="btn btn-danger btn-sm" @click="desactivarVenta(venta.id)">
@@ -552,13 +555,16 @@
                     console.log(error);
                 });
             },
-             cambiarPagina(page, buscar, criterio){
-                 let me = this;
-                 //Actualiza la pagina actual
-                 me.pagination.current_page = page;
-                 //Envia la peticion para actualizar la data de esa pagina
-                 me.listarVenta(page,buscar,criterio);
-             },
+            pdfVenta(id){
+                 window.open('http://localhost/sistema/public/venta/pdf/'+ id);
+            },
+            cambiarPagina(page,buscar,criterio){
+                let me = this;
+                //Actualiza la página actual
+                me.pagination.current_page = page;
+                //Envia la petición para visualizar la data de esa página
+                me.listarVenta(page,buscar,criterio);
+            },
               encuentra(id){
                 var sw=0;
                 for(var i=0;i<this.arrayDetalle.length;i++){
@@ -676,6 +682,7 @@
                     me.codigo='';
                     me.descuento=0;
                     me.arrayDetalle=[];
+                    window.open('http://localhost/sistema/public/venta/pdf/'+ response.data.id);
 
                 }).catch(function (error) {
                     console.log(error);
