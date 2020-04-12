@@ -251,7 +251,7 @@ import VueBarcode from 'vue-barcode';
                 });
             },
             cargarPdf(){
-                window.open(this.ruta + './articulo/listarPdf','_blank');
+                window.open('http://127.0.0.1:8000/articulo/listarPdf','_blank');
             },
             selectCategoria(){
                 let me=this;
