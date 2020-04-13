@@ -162,4 +162,4 @@
             this.getVentas();
         }
     }
-  </script>
+</script>
