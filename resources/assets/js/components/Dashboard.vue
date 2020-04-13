@@ -70,7 +70,7 @@
         methods : {
             getIngresos(){
                 let me=this;
-                var url= '/dashboard';
+                var url= './dashboard';
                 axios.get(url).then(function (response) {
                     var respuesta= response.data;
                     me.ingresos = respuesta.ingresos;
@@ -83,7 +83,7 @@
             },
             getVentas(){
                 let me=this;
-                var url= '/dashboard';
+                var url= './dashboard';
                 axios.get(url).then(function (response) {
                     var respuesta= response.data;
                     me.ventas = respuesta.ventas;

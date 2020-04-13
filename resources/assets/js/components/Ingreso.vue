@@ -616,7 +616,7 @@
                     console.log(error);
                 });
             }, 
-            registrarIngreso(){
+             registrarIngreso(){
                 if (this.validarIngreso()){
                     return;
                 }
@@ -639,7 +639,7 @@
                     me.tipo_comprobante='BOLETA';
                     me.serie_comprobante='';
                     me.num_comprobante='';
-                    me.impuesto=0.19;
+                    me.impuesto=0.18;
                     me.total=0.0;
                     me.idarticulo=0;
                     me.articulo='';

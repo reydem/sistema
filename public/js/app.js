@@ -3099,25 +3099,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  // props : ['ruta'],
   data: function data() {
     return {
       varIngreso: null,
       charIngreso: null,
       ingresos: [],
       varTotalIngreso: [],
-      varMesIngreso: [] // varVenta:null,
-      // charVenta:null,
-      // ventas:[],
-      // varTotalVenta:[],
-      // varMesVenta:[],
-
+      varMesIngreso: [],
+      varVenta: null,
+      charVenta: null,
+      ventas: [],
+      varTotalVenta: [],
+      varMesVenta: []
     };
   },
   methods: {
     getIngresos: function getIngresos() {
-      var me = this; // var url=this.ruta + './dashboard';
-
+      var me = this;
       var url = './dashboard';
       axios.get(url).then(function (response) {
         var respuesta = response.data;
@@ -3128,19 +3126,18 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    // getVentas(){
-    //     let me=this;
-    //     var url=this.ruta + './dashboard';
-    //     axios.get(url).then(function (response) {
-    //         var respuesta= response.data;
-    //         me.ventas = respuesta.ventas;
-    //         //cargamos los datos del chart
-    //         me.loadVentas();
-    //     })
-    //     .catch(function (error) {
-    //         console.log(error);
-    //     });
-    // },
+    getVentas: function getVentas() {
+      var me = this;
+      var url = './dashboard';
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.ventas = respuesta.ventas; //cargamos los datos del chart
+
+        me.loadVentas();
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
     loadIngresos: function loadIngresos() {
       var me = this;
       me.ingresos.map(function (x) {
@@ -3170,10 +3167,41 @@ __webpack_require__.r(__webpack_exports__);
           }
         }
       });
+    },
+    loadVentas: function loadVentas() {
+      var me = this;
+      me.ventas.map(function (x) {
+        me.varMesVenta.push(x.mes);
+        me.varTotalVenta.push(x.total);
+      });
+      me.varVenta = document.getElementById('ventas').getContext('2d');
+      me.charVenta = new Chart(me.varVenta, {
+        type: 'bar',
+        data: {
+          labels: me.varMesVenta,
+          datasets: [{
+            label: 'Ventas',
+            data: me.varTotalVenta,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 0.2)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
     }
   },
   mounted: function mounted() {
-    this.getIngresos(); // this.getVentas();
+    this.getIngresos();
+    this.getVentas();
   }
 });
 
@@ -3832,7 +3860,7 @@ __webpack_require__.r(__webpack_exports__);
         me.tipo_comprobante = 'BOLETA';
         me.serie_comprobante = '';
         me.num_comprobante = '';
-        me.impuesto = 0.19;
+        me.impuesto = 0.18;
         me.total = 0.0;
         me.idarticulo = 0;
         me.articulo = '';
