@@ -30,6 +30,7 @@ Vue.component('ingreso', require('./components/Ingreso.vue').default);
 Vue.component('venta', require('./components/Venta.vue').default);
 Vue.component('dashboard', require('./components/Dashboard.vue').default);
 Vue.component('consultaingreso', require('./components/ConsultaIngreso.vue').default);
+Vue.component('consultaventa', require('./components/ConsultaVenta.vue').default);
 
 
 /**
