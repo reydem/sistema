@@ -556,7 +556,7 @@
                 });
             },
             pdfVenta(id){
-                 window.open('http://localhost/sistema/public/venta/pdf/'+ id);
+                 window.open('http://plataforma-web.xyz/venta/pdf/'+ id);
             },
             cambiarPagina(page,buscar,criterio){
                 let me = this;
@@ -682,7 +682,7 @@
                     me.codigo='';
                     me.descuento=0;
                     me.arrayDetalle=[];
-                    window.open('http://localhost/sistema/public/venta/pdf/'+ response.data.id);
+                    window.open('http://plataforma-web.xyz/venta/pdf/'+ response.data.id);
 
                 }).catch(function (error) {
                     console.log(error);

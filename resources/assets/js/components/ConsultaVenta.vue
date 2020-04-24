@@ -277,7 +277,7 @@
                 });
             },
             pdfVenta(id){
-                window.open('http://localhost/sistema/public/venta/pdf/'+ id);
+                window.open('http://plataforma-web.xyz/venta/pdf/'+ id);
             },
             cambiarPagina(page,buscar,criterio){
                 let me = this;
